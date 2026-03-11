@@ -1467,4 +1467,18 @@ body.dark-mode .header.scrolled {
     .fact:hover {
         transform: none;
     }
+
+}
+#subject {
+    border: 2px solid #f86f72 !important;
+    border-radius: 10px !important;
+    padding: 0.8rem 1rem !important;
+    font-family: inherit !important;
+    color: #5d4e6d !important;
+}
+
+#subject:focus {
+    border-color: #ff9a9e !important;
+    box-shadow: 0 0 0 4px rgba(255, 154, 158, 0.2) !important;
+    outline: none !important;
 }
