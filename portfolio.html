@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="IT Student portfolio showcasing creative projects and skills">
+    <meta name="keywords" content="frontend developer, web developer, portfolio, javascript, C++, OOP, DSA">
+    <meta name="author" content="Faria Sajid">
+    
+    <!-- Open Graph tags for social sharing -->
+    <meta property="og:title" content="Faria Sajid - Portfolio">
+    <meta property="og:description" content="Check out my awesome projects!">
+    <meta property="og:image" content="assets/preview.jpg">
+    <meta property="og:url" content="fariawebsite.com">
+    
+    <!-- Font Awesome for icons (optional but helpful) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Your CSS file -->
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header & Navigation -->
+    <header class="header">
+        <nav class="navbar container">
+            <div class="logo">
+                <a href="#home">
+                    <span class="logo-text">Faria Sajid</span>
+                </a>
+            </div>
+            
+            <!-- Mobile menu button -->
+            <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            
+            <!-- Navigation links -->
+            <ul class="nav-menu" role="list">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <!-- Theme toggle button -->
+            <button class="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <p class="hero-greeting">Hello, I'm</p>
+                        <h1 class="hero-title">
+                            <span class="title-main">Faria Sajid</span>
+                            <span class="title-role">IT Student</span>
+                        </h1>
+                        <p class="hero-description">
+                            I am an Information Technology student with a strong interest in programming, web development, and problem solving. 
+                        </p>
+                        
+                        <!-- CTA Buttons -->
+                        <div class="hero-buttons">
+                            <a href="#projects" class="btn btn-primary">View My Work</a>
+                            <a href="#contact" class="btn btn-secondary">Let's Talk</a>
+                        </div>
+                        
+                        <!-- Social Links -->
+                        <div class="social-links">
+                            <a href="https://github.com/FariaSajid" target="_blank" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/faria-sajid" target="_blank" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Hero Image -->
+                    <div class="hero-image">
+                        <div class="image-wrapper">
+                            <!-- Replace with your photo or illustration -->
+                            <img src="Profile_pic.jpg" alt="Developer illustration" class="profile-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p class="about-intro">
+                            I am an Information Technology student with a strong interest in programming, web development, 
+                            and building practical digital solutions.
+                        </p>
+                        <p>
+                            Through my academic journey, I have developed several projects.
+                            I have experience with technologies such as C++, HTML, CSS and JavaScript, and I enjoy turning ideas into functional applications. 
+                            I am always eager to learn new technologies, improve my problem-solving skills, and gain real-world experience in the field of software and web development.
+                        </p>
+                        <p>
+                            When I'm not coding, you'll find me doing crochet, exploring new technologies, 
+                            or contributing to open source.
+                        </p>
+                        
+                        <!-- Fun facts with icons -->
+                        <div class="fun-facts">
+                            <div class="fact">
+                                <i class="fas fa-code"></i>
+                                <span>7+ projects completed</span>
+                            </div>
+                            <div class="fact">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>4 Semesters Done</span>
+                            </div>
+                            <div class="fact">
+                                <i class="fas fa-spa"></i>
+                                <span>Crochet lover</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2 class="section-title">Technical Skills</h2>
+                
+                <!-- Skill categories -->
+                <div class="skills-grid">
+                    <!-- Frontend -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Frontend</h3>
+                        <div class="skill-items">
+                            <div class="skill-item" data-level="90">
+                                <span class="skill-name">HTML</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item" data-level="85">
+                                <span class="skill-name">CSS</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item" data-level="85">
+                                <span class="skill-name">Bootstrap</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item" data-level="80">
+                                <span class="skill-name">JavaScript</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3><i class="fas fa-laptop-code"></i> C++</h3>
+                        <div class="skill-items">
+                            <div class="skill-item" data-level="90">
+                                <span class="skill-name">OOP</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item" data-level="85">
+                                <span class="skill-name">DSA</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tools -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-tools"></i> Tools</h3>
+                        <div class="skill-items">
+                            <div class="skill-item" data-level="85">
+                                <span class="skill-name">GitHub</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item" data-level="80">
+                                <span class="skill-name">VS Code</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Soft Skills (no progress bars) -->
+                    <div class="skill-category soft-skills">
+                        <h3><i class="fas fa-users"></i> Soft Skills</h3>
+                        <div class="soft-skills-list">
+                            <span class="soft-skill-tag">Communication</span>
+                            <span class="soft-skill-tag">Teamwork</span>
+                            <span class="soft-skill-tag">Problem Solving</span>
+                            <span class="soft-skill-tag">Time Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title">My Projects</h2>
+                
+                <!-- Filter buttons -->
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="cpp">C++</button>
+                    <button class="filter-btn" data-filter="web">Web Development</button>
+                </div>
+                
+                <!-- Projects grid -->
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <article class="project-card" data-category="web">
+                        <div class="project-image">
+                            <img src="Portfolio.pic.png" alt="Project 1 screenshot">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="#" target="_blank" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i> Live
+                                    </a>
+                                    <a href="#" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Portfolio Website</h3>
+                            <p>Personal portfolio website showcasing my projects and skills</p>
+                            <div class="project-tech">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                                <span>VS Code</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Project 2 -->
+                    <article class="project-card" data-category="cpp">
+                        <div class="project-image">
+                            <img src="Online_quiz_pic.png" alt="Project 2 screenshot">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/FariaSajid/CPP_Projects/blob/main/Quiz_Application.cpp" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Online Quiz Application</h3>
+                            <p>Developed a quiz system with score calculation and question management.</p>
+                            <div class="project-tech">
+                                <span>C++</span>
+                                <span>OOP</span>
+                                <span>VS Code</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Project 3 -->
+                    <article class="project-card" data-category="cpp">
+                        <div class="project-image">
+                            <img src="Online_shopping-pic.png" alt="Project 3 screenshot">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/FariaSajid/CPP_Projects/blob/main/Online_Shopping_System.cpp" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Online Shopping System</h3>
+                            <p>Built an online shopping platform for product browsing and order management.</p>
+                            <div class="project-tech">
+                                <span>C++</span>
+                                <span>VS Code</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Project 4 -->
+                    <article class="project-card" data-category="cpp">
+                        <div class="project-image">
+                            <img src="Attendence_pic.png" alt="Project 4 screenshot">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/FariaSajid/CPP_Projects/blob/main/Attendance.cpp" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Attendance System</h3>
+                            <p>Designed a system to manage and track attendance records.</p>
+                            <div class="project-tech">
+                                <span>C++</span>
+                                <span>OOP</span>
+                                <span>VS Code</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 5 -->
+                    <article class="project-card" data-category="cpp">
+                        <div class="project-image">
+                            <img src="Resume_builder_pic.png" alt="Project 4 screenshot">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/FariaSajid/CPP_Projects/blob/main/Resume_Builder.cpp" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Resume Builder</h3>
+                            <p>Built a resume generator that formats user input into a structured resume.</p>
+                            <div class="project-tech">
+                                <span>C++</span>
+                                <span>DSA</span>
+                                <span>File Handling</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 6 -->
+                    <article class="project-card" data-category="cpp">
+                        <div class="project-image">
+                            <img src="Voting_pic.png" alt="Project 4 screenshot">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/FariaSajid/CPP_Projects/blob/main/Voting_System.cpp" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Voting System</h3>
+                            <p>Implemented a voting application to record and display results.</p>
+                            <div class="project-tech">
+                                <span>C++</span>
+                                <span>OOP</span>
+                                <span>VS Code</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 7 -->
+                    <article class="project-card" data-category="cpp">
+                        <div class="project-image">
+                            <img src="Memory_card_pic.png" alt="Project 4 screenshot">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/FariaSajid/CPP_Projects/blob/main/Memory_Card_Game.cpp" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Memory Card Game</h3>
+                            <p>Developed a card matching game using logical and programming concepts.</p>
+                            <div class="project-tech">
+                                <span>C++</span>
+                                <span>DSA</span>
+                                <span>VS Code</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 8 -->
+                    <article class="project-card" data-category="cpp">
+                        <div class="project-image">
+                            <img src="Rock_Paper_pic.png" alt="Project 4 screenshot">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/FariaSajid/CPP_Projects/blob/main/Rock_Paper_Scissors.cpp" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Rock Paper Scissors Game</h3>
+                            <p>Created a simple game with player turns and win condition logic.</p>
+                            <div class="project-tech">
+                                <span>C++</span>
+                                <span>VS Code</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                
+                <!-- View more button -->
+                <div class="projects-more">
+                    <a href="https://github.com/FariaSajid" class="btn btn-outline">See All Projects <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                
+                <div class="contact-container">
+                    <!-- Contact info -->
+                    <div class="contact-info">
+                        <h3>Let's work together!</h3>
+                        <p>I'm currently available for freelance work or full-time opportunities. If you have a project in mind or just want to say hi, feel free to reach out!</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h4>Email</h4>
+                                    <a href="mailto:your.email@example.com">fariasajid2007@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h4>Phone</h4>
+                                    <a href="tel:+92 321 9526786">+92 321 9526786</a>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Location</h4>
+                                    <p>Pakistan (Remote Work)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact form -->
+                    <form class="contact-form" id="contactForm" action="https://formsubmit.co/fariasajid2007@gmail.com" method="POST" novalidate>
+
+                        <!-- Add these hidden fields -->
+                        <input type="hidden" name="_next" value="https://yourportfolio.com/thanks.html">
+                        <input type="hidden" name="_subject" value="✨ New message from Faria's Portfolio!">
+                        <input type="hidden" name="_captcha" value="false">
+
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                            <span class="error-message" id="nameError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                            <span class="error-message" id="emailError"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <span class="error-message" id="messageError"></span>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                        
+                        <!-- Form status message -->
+                        <div class="form-status" aria-live="polite"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Faria Sajid All rights reserved.</p>
+                
+                <div class="footer-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Use</a>
+                </div>
+                
+                <!-- Back to top button -->
+                <button class="back-to-top" aria-label="Back to top">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript file -->
+    <script src="portfolio.js"></script>
+</body>
+</html>
