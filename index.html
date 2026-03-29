@@ -21,6 +21,18 @@
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Preconnect to critical third-party origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- DNS Prefetch for faster DNS resolution -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
     
     <!-- Your CSS file -->
     <link rel="stylesheet" href="portfolio.css">
@@ -127,7 +139,7 @@
                         <div class="fun-facts">
                             <div class="fact">
                                 <i class="fas fa-code"></i>
-                                <span>7+ projects completed</span>
+                                <span>10+ projects completed</span>
                             </div>
                             <div class="fact">
                                 <i class="fas fa-graduation-cap"></i>
@@ -156,25 +168,25 @@
                         <h3><i class="fas fa-code"></i> Frontend</h3>
                         <div class="skill-items">
                             <div class="skill-item" data-level="90">
-                                <span class="skill-name">HTML</span>
+                                <span class="skill-name">HTML | CSS</span>
                                 <div class="skill-bar">
                                     <div class="skill-progress" style="width: 0%"></div>
                                 </div>
                             </div>
-                            <div class="skill-item" data-level="85">
-                                <span class="skill-name">CSS</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 0%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-level="85">
+                            <div class="skill-item" data-level="60">
                                 <span class="skill-name">Bootstrap</span>
                                 <div class="skill-bar">
                                     <div class="skill-progress" style="width: 0%"></div>
                                 </div>
                             </div>
-                            <div class="skill-item" data-level="80">
+                            <div class="skill-item" data-level="74">
                                 <span class="skill-name">JavaScript</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item" data-level="52">
+                                <span class="skill-name">React</span>
                                 <div class="skill-bar">
                                     <div class="skill-progress" style="width: 0%"></div>
                                 </div>
@@ -216,6 +228,12 @@
                                     <div class="skill-progress" style="width: 0%"></div>
                                 </div>
                             </div>
+                            <div class="skill-item" data-level="80">
+                                <span class="skill-name">N8n</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 0%"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -243,6 +261,7 @@
                     <button class="filter-btn active" data-filter="all">All</button>
                     <button class="filter-btn" data-filter="cpp">C++</button>
                     <button class="filter-btn" data-filter="web">Web Development</button>
+                    <button class="filter-btn" data-filter="ai">AI Automation</button>
                 </div>
                 
                 <!-- Projects grid -->
@@ -273,8 +292,35 @@
                             </div>
                         </div>
                     </article>
-                    
+
                     <!-- Project 2 -->
+                    <article class="project-card" data-category="web">
+                        <div class="project-image">
+                            <img src="AutoCar_Website.png" alt="Project 1 screenshot">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://fariasajid.github.io/autocarservicecenter.github.io/" target="_blank" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i> Live
+                                    </a>
+                                    <a href="https://github.com/FariaSajid/autocarservicecenter.github.io" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Auto Car Service Website</h3>
+                            <p>Dubai’s trusted auto service center, fully mobile-ready with instant call & WhatsApp.</p>
+                            <div class="project-tech">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                                <span>VS Code</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Project 3 -->
                     <article class="project-card" data-category="cpp">
                         <div class="project-image">
                             <img src="Online_Quiz_pic.png" alt="Project 2 screenshot">
@@ -297,7 +343,7 @@
                         </div>
                     </article>
                     
-                    <!-- Project 3 -->
+                    <!-- Project 4 -->
                     <article class="project-card" data-category="cpp">
                         <div class="project-image">
                             <img src="Online_shopping-pic.png" alt="Project 3 screenshot">
@@ -319,7 +365,7 @@
                         </div>
                     </article>
                     
-                    <!-- Project 4 -->
+                    <!-- Project 5 -->
                     <article class="project-card" data-category="cpp">
                         <div class="project-image">
                             <img src="Attendence_pic.png" alt="Project 4 screenshot">
@@ -342,7 +388,7 @@
                         </div>
                     </article>
 
-                    <!-- Project 5 -->
+                    <!-- Project 6 -->
                     <article class="project-card" data-category="cpp">
                         <div class="project-image">
                             <img src="Resume_builder_pic.png" alt="Project 4 screenshot">
@@ -365,7 +411,7 @@
                         </div>
                     </article>
 
-                    <!-- Project 6 -->
+                    <!-- Project 7 -->
                     <article class="project-card" data-category="cpp">
                         <div class="project-image">
                             <img src="Voting_pic.png" alt="Project 4 screenshot">
@@ -388,7 +434,7 @@
                         </div>
                     </article>
 
-                    <!-- Project 7 -->
+                    <!-- Project 8 -->
                     <article class="project-card" data-category="cpp">
                         <div class="project-image">
                             <img src="Memory_card_pic.png" alt="Project 4 screenshot">
@@ -411,7 +457,7 @@
                         </div>
                     </article>
 
-                    <!-- Project 8 -->
+                    <!-- Project 9 -->
                     <article class="project-card" data-category="cpp">
                         <div class="project-image">
                             <img src="Rock_Paper_pic.png" alt="Project 4 screenshot">
@@ -432,6 +478,32 @@
                             </div>
                         </div>
                     </article>
+                     
+                    <!-- Project 10-->
+                    <article class="project-card" data-category="ai">
+                        <div class="project-image">
+                            <img src="AI_Assistant.png" alt="AI Chatbot Assistant">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="AI Assistant Automation.mp4" target="_blank" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i> Demo
+                                    </a>
+                                    <a href="https://github.com/FariaSajid/Personal-AI-Assistant" target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i> Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>AI Chatbot Assistant</h3>
+                            <p>Intelligent chatbot Personal assistant using OpenAI API with WhatsApp integration.</p>
+                            <div class="project-tech">
+                                <span>N8n</span>
+                                <span>OpenAI API</span>
+                                <span>WhatsApp</span>
+                            </div>
+                        </div>
+                    </article>
                 </div>
                 
                 <!-- View more button -->
@@ -442,82 +514,86 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2 class="section-title">Get In Touch</h2>
+<section id="contact" class="contact">
+    <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        
+        <div class="contact-container">
+            <!-- Contact info -->
+            <div class="contact-info">
+                <h3>Let's chat on WhatsApp! 💬</h3>
+                <p>I'm currently available for freelance work or full-time opportunities. If you have a project in mind or just want to say hi, feel free to reach out on WhatsApp!</p>
                 
-                <div class="contact-container">
-                    <!-- Contact info -->
-                    <div class="contact-info">
-                        <h3>Let's work together!</h3>
-                        <p>I'm currently available for freelance work or full-time opportunities. If you have a project in mind or just want to say hi, feel free to reach out!</p>
-                        
-                        <div class="contact-details">
-                            <div class="contact-item">
-                                <i class="fas fa-envelope"></i>
-                                <div>
-                                    <h4>Email</h4>
-                                    <a href="mailto:your.email@example.com">fariasajid2007@gmail.com</a>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <i class="fas fa-phone"></i>
-                                <div>
-                                    <h4>Phone</h4>
-                                    <a href="tel:+92 321 9526786">+92 321 9526786</a>
-                                </div>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <div>
-                                    <h4>Location</h4>
-                                    <p>Pakistan (Remote Work)</p>
-                                </div>
-                            </div>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <a href="https://wa.me/923219526786?text=Your%20message" target="_blank">+92 321 9526786</a>
                         </div>
                     </div>
                     
-                    <!-- Contact form -->
-                    <form class="contact-form" id="contactForm" action="https://formsubmit.co/fariasajid2007@gmail.com" method="POST" novalidate>
-
-                        <!-- Add these hidden fields -->
-                        <input type="hidden" name="_next" value="https://yourportfolio.com/thanks.html">
-                        <input type="hidden" name="_subject" value="✨ New message from Faria's Portfolio!">
-                        <input type="hidden" name="_captcha" value="false">
-
-                        <div class="form-group">
-                            <label for="name">Name *</label>
-                            <input type="text" id="name" name="name" required>
-                            <span class="error-message" id="nameError"></span>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Pakistan (Remote Work)</p>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required>
-                            <span class="error-message" id="emailError"></span>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                            <span class="error-message" id="messageError"></span>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-                        
-                        <!-- Form status message -->
-                        <div class="form-status" aria-live="polite"></div>
-                    </form>
+                    </div>
+                </div>
+                
+                <!-- WhatsApp CTA Button -->
+                <div class="whatsapp-cta">
+                    <a href="https://wa.me/923219526786?text=Your%20message" 
+                       class="btn btn-whatsapp" 
+                       target="_blank">
+                        <i class="fab fa-whatsapp"></i> Start WhatsApp Chat
+                    </a>
                 </div>
             </div>
-        </section>
+            
+            <!-- Contact Form - Sends to WhatsApp -->
+<form class="contact-form" id="contactForm">
+    <h4 class="form-title">Send me a message 📱</h4>
+    <p class="form-subtitle">Fill this out and I'll reply on WhatsApp!</p>
+    
+    <div class="form-group">
+        <label for="name">Your Name *</label>
+        <input type="text" id="name" name="name" required placeholder="e.g., Sarah Khan">
+        <span class="error-message" id="nameError"></span>
+    </div>
+    
+    <div class="form-group">
+        <label for="whatsapp">Your WhatsApp Number (optional)</label>
+        <input type="tel" id="whatsapp" name="whatsapp" placeholder="+92 XXX XXXXXXX">
+        <span class="error-message" id="whatsappError"></span>
+    </div>
+    
+    <div class="form-group">
+        <label for="subject">Subject *</label>
+        <input type="text" id="subject" name="subject" required placeholder="e.g., Project Collaboration">
+        <span class="error-message" id="subjectError"></span>
+    </div>
+    
+    <div class="form-group">
+        <label for="message">Your Message *</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project or what you'd like to discuss..."></textarea>
+        <span class="error-message" id="messageError"></span>
+    </div>
+    
+    <button type="submit" class="btn btn-primary btn-full">
+        <i class="fab fa-whatsapp"></i> Send via WhatsApp
+    </button>
+    
+    <div class="form-status" aria-live="polite"></div>
+    
+    <p class="form-note">
+        <i class="fas fa-lock"></i> Your message will open in WhatsApp!
+    </p>
+</form>
+        </div>
+    </div>
+</section>
     </main>
 
     <!-- Footer -->
@@ -542,7 +618,4 @@
     <!-- JavaScript file -->
     <script src="portfolio.js"></script>
 </body>
-
 </html>
-
-
