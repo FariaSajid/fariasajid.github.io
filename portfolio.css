@@ -1467,7 +1467,6 @@ body.dark-mode .header.scrolled {
     .fact:hover {
         transform: none;
     }
-
 }
 #subject {
     border: 2px solid #f86f72 !important;
@@ -1481,4 +1480,146 @@ body.dark-mode .header.scrolled {
     border-color: #ff9a9e !important;
     box-shadow: 0 0 0 4px rgba(255, 154, 158, 0.2) !important;
     outline: none !important;
+}
+
+/* WhatsApp specific styles */
+.contact-info .contact-item i.fa-whatsapp {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+}
+
+.btn-whatsapp {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    padding: 0.9rem 1.8rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-whatsapp i {
+    font-size: 1.2rem;
+}
+
+.btn-whatsapp:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+}
+
+/* Form enhancements */
+.form-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.form-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.form-note {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    text-align: center;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+}
+
+.form-note i {
+    font-size: 0.7rem;
+    color: var(--primary);
+}
+
+/* WhatsApp button active state for mobile */
+.btn-whatsapp:active {
+    transform: scale(0.98);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .btn-whatsapp {
+        width: 100%;
+        padding: 0.8rem 1.5rem;
+    }
+    
+    .form-title {
+        font-size: 1.2rem;
+    }
+    
+    .contact-item i.fa-whatsapp {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Desktop hover effects */
+@media (min-width: 769px) {
+    .btn-whatsapp:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+    }
+}
+
+/* Optimize rendering on mobile */
+@media (max-width: 768px) {
+    /* GPU acceleration for smoother scrolling */
+    .hero, .about, .skills, .projects, .contact {
+        transform: translateZ(0);
+        will-change: transform;
+    }
+    
+    /* Reduce paint costs */
+    .project-card, .skill-category {
+        will-change: transform;
+    }
+    
+    /* Optimize images */
+    img {
+        content-visibility: auto;
+        contain: paint;
+    }
+    
+    /* Prevent layout shifts */
+    .project-image {
+        aspect-ratio: 16/9;
+        background-color: var(--background);
+    }
+}
+
+/* Lazy loading image styles */
+img[data-src] {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+img.loaded {
+    opacity: 1;
+}
+
+/* Font loading optimization */
+body {
+    font-display: swap;
+}
+
+.fonts-loaded body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Slow connection optimizations */
+.slow-connection .hero::before,
+.slow-connection .hero::after {
+    display: none !important;
+}
+
+.slow-connection .project-card {
+    transform: none !important;
 }
