@@ -195,132 +195,173 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 300);
             });
             
-            // Show notification
-            if (filterValue !== 'all') {
-                const categoryName = filterValue === 'cpp' ? 'C++' : 'Web Development';
-                showNotification(`Showing ${categoryName} projects! 🚀`, 'info');
+            // Show notification based on category
+        if (filterValue !== 'all') {
+            let categoryName = '';
+            switch(filterValue) {
+                case 'cpp':
+                    categoryName = 'C++';
+                    break;
+                case 'web':
+                    categoryName = 'Web Development';
+                    break;
+                case 'ai':
+                    categoryName = 'AI Automation';
+                    break;
             }
+            showNotification(`Showing ${categoryName} projects!`, 'info');
+        }
         });
     });
 
-    // ========================================
-    // 8. CONTACT FORM HANDLING
-    // ========================================
-    const contactForm = document.getElementById('contactForm');
-    const formStatus = document.querySelector('.form-status');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
-            };
-            
-            // Validate form
-            if (validateForm(formData)) {
-                // Show loading state
-                const submitBtn = contactForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.textContent;
-                submitBtn.textContent = 'Sending... ✨';
-                submitBtn.disabled = true;
-                
-                try {
-                    // Simulate form submission (replace with actual API endpoint)
-                    await simulateFormSubmission(formData);
-                    
-                    // Show success message
-                    formStatus.textContent = 'Message sent successfully! 🎉 I\'ll get back to you soon.';
-                    formStatus.className = 'form-status success';
-                    
-                    // Clear form
-                    contactForm.reset();
-                    
-                    // Hide success message after 5 seconds
-                    setTimeout(() => {
-                        formStatus.style.opacity = '0';
-                        setTimeout(() => {
-                            formStatus.textContent = '';
-                            formStatus.className = 'form-status';
-                            formStatus.style.opacity = '';
-                        }, 300);
-                    }, 5000);
-                    
-                } catch (error) {
-                    // Show error message
-                    formStatus.textContent = 'Oops! Something went wrong. Please try again. 😅';
-                    formStatus.className = 'form-status error';
-                } finally {
-                    // Reset button
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }
+// ========================================
+// 8. CONTACT FORM - WHATSAPP INTEGRATION 
+// ========================================
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.querySelector('.form-status');
+
+// Your WhatsApp number (international format without '+')
+const whatsappNumber = '923219526786'; // Remove the '+' and any spaces
+
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Get form data
+        const name = document.getElementById('name')?.value || '';
+        const whatsapp = document.getElementById('whatsapp')?.value || '';
+        const subject = document.getElementById('subject')?.value || '';
+        const message = document.getElementById('message')?.value || '';
+        
+        // Validate form
+        const validation = validateWhatsAppForm({ name, subject, message });
+        
+        if (validation.isValid) {
+            // Create WhatsApp message with better formatting
+            let whatsappMessage = `*New message from Portfolio Website*\n\n`;
+            whatsappMessage += `*Name:* ${name}\n`;
+            if (whatsapp) {
+                whatsappMessage += `*WhatsApp:* ${whatsapp}\n`;
             }
-        });
-    }
-    
-    // Form validation function
-    function validateForm(data) {
-        let isValid = true;
-        
-        // Clear previous errors
-        document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
-        document.querySelectorAll('input, textarea').forEach(el => el.style.borderColor = '');
-        
-        // Validate name
-        if (!data.name.trim()) {
-            showError('name', 'Name is required 💫');
-            isValid = false;
-        }
-        
-        // Validate email
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!data.email.trim()) {
-            showError('email', 'Email is required 📧');
-            isValid = false;
-        } else if (!emailRegex.test(data.email)) {
-            showError('email', 'Please enter a valid email address 💌');
-            isValid = false;
-        }
-        
-        // Validate message
-        if (!data.message.trim()) {
-            showError('message', 'Message is required 💬');
-            isValid = false;
-        } else if (data.message.trim().length < 10) {
-            showError('message', 'Message should be at least 10 characters long 📝');
-            isValid = false;
-        }
-        
-        return isValid;
-    }
-    
-    // Show error message
-    function showError(fieldId, message) {
-        const errorElement = document.getElementById(`${fieldId}Error`);
-        const inputElement = document.getElementById(fieldId);
-        
-        if (errorElement) {
-            errorElement.textContent = message;
-        }
-        if (inputElement) {
-            inputElement.style.borderColor = '#ff6b6b';
-        }
-    }
-    
-    // Simulate form submission (replace with actual API call)
-    function simulateFormSubmission(data) {
-        return new Promise((resolve) => {
+            whatsappMessage += `*Subject:* ${subject}\n\n`;
+            whatsappMessage += `*Message:* \n${message}\n\n`;
+            whatsappMessage += `---\nSent from Faria's Portfolio`;
+            
+            // Encode message for URL (replace newlines and special characters)
+            let encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // Create WhatsApp URL - using correct format
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            // Show success message
+            formStatus.textContent = '✨ Opening WhatsApp... ✨';
+            formStatus.className = 'form-status success';
+            formStatus.style.opacity = '1';
+            
+            // Clear form
+            contactForm.reset();
+            
+            // Open WhatsApp in new tab immediately
+            window.open(whatsappURL, '_blank');
+            
+            // Show notification
+            showNotification('💬 WhatsApp opened! Send your message to complete!', 'success');
+            
+            // Hide status message after 3 seconds
             setTimeout(() => {
-                console.log('Form submitted:', data);
-                resolve();
-            }, 1500);
-        });
+                formStatus.style.opacity = '0';
+                setTimeout(() => {
+                    formStatus.textContent = '';
+                    formStatus.className = 'form-status';
+                    formStatus.style.opacity = '';
+                }, 300);
+            }, 3000);
+            
+        } else {
+            // Show validation errors
+            formStatus.textContent = validation.message;
+            formStatus.className = 'form-status error';
+            formStatus.style.opacity = '1';
+            
+            // Auto-hide error after 5 seconds
+            setTimeout(() => {
+                formStatus.style.opacity = '0';
+                setTimeout(() => {
+                    formStatus.textContent = '';
+                    formStatus.className = 'form-status';
+                    formStatus.style.opacity = '';
+                }, 300);
+            }, 5000);
+        }
+    });
+}
+
+// WhatsApp Form Validation
+function validateWhatsAppForm(data) {
+    let isValid = true;
+    let message = '';
+    
+    // Clear previous errors
+    document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
+    document.querySelectorAll('input, textarea').forEach(el => {
+        el.style.borderColor = '';
+        el.style.border = '';
+    });
+    
+    // Validate name
+    if (!data.name.trim()) {
+        showError('name', 'Please tell me your name! 💫');
+        isValid = false;
+        message = 'Please fill in all required fields';
     }
+    
+    // Validate subject
+    if (!data.subject.trim()) {
+        showError('subject', 'What would you like to discuss? 📝');
+        isValid = false;
+        message = 'Please fill in all required fields';
+    }
+    
+    // Validate message
+    if (!data.message.trim()) {
+        showError('message', 'Please write your message! 💬');
+        isValid = false;
+        message = 'Please fill in all required fields';
+    } else if (data.message.trim().length < 10) {
+        showError('message', 'Please write at least 10 characters 📝');
+        isValid = false;
+        message = 'Message should be at least 10 characters long';
+    }
+    
+    // Optional: Validate WhatsApp number format if provided
+    if (data.whatsapp && data.whatsapp.trim()) {
+        const whatsappRegex = /^[\+]?[0-9\s\-]{10,20}$/;
+        if (!whatsappRegex.test(data.whatsapp)) {
+            showError('whatsapp', 'Please enter a valid WhatsApp number (optional) 📱');
+            // Not setting isValid = false because this is optional
+        }
+    }
+    
+    if (isValid) {
+        message = '✓ Opening WhatsApp...';
+    }
+    
+    return { isValid, message };
+}
+
+// Show error message (updated)
+function showError(fieldId, message) {
+    const errorElement = document.getElementById(`${fieldId}Error`);
+    const inputElement = document.getElementById(fieldId);
+    
+    if (errorElement) {
+        errorElement.textContent = message;
+    }
+    if (inputElement) {
+        inputElement.style.border = '2px solid #ff6b6b';
+        inputElement.style.borderColor = '#ff6b6b';
+    }
+}
 
     // ========================================
     // 9. SMOOTH SCROLLING FOR NAVIGATION
@@ -627,7 +668,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         input:valid, textarea:valid {
-            border-color: #51cf66;
+            border-color: #ff6b6b;
         }
         
         /* Reveal animations */
@@ -644,4 +685,448 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     
     document.head.appendChild(style);
+
+    // ========================================
+// PERFORMANCE OPTIMIZATIONS FOR MOBILE
+// ========================================
+
+// 1. LAZY LOAD IMAGES (Only load images when needed)
+// ========================================
+function initLazyLoading() {
+    // Check if browser supports Intersection Observer
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const src = img.getAttribute('data-src');
+                    
+                    if (src) {
+                        img.src = src;
+                        img.classList.add('loaded');
+                    }
+                    
+                    // Also handle background images
+                    if (img.dataset.bg) {
+                        img.style.backgroundImage = `url(${img.dataset.bg})`;
+                    }
+                    
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px', // Start loading 50px before image enters viewport
+            threshold: 0.01
+        });
+        
+        // Observe all images with data-src attribute
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+        
+        // Also observe regular images for progressive loading
+        document.querySelectorAll('img:not([data-src])').forEach(img => {
+            if (!img.complete) {
+                img.style.opacity = '0';
+                img.addEventListener('load', function() {
+                    this.style.opacity = '1';
+                });
+                imageObserver.observe(img);
+            }
+        });
+    } else {
+        // Fallback for older browsers
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.getAttribute('data-src');
+        });
+    }
+}
+
+// 2. DEFER NON-CRITICAL CSS
+// ========================================
+function deferNonCriticalCSS() {
+    // Load non-critical CSS after page load
+    window.addEventListener('load', () => {
+        const styles = [
+            // Add any non-critical CSS files here
+        ];
+        
+        styles.forEach(style => {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = style;
+            link.media = 'print';
+            link.onload = () => link.media = 'all';
+            document.head.appendChild(link);
+        });
+    });
+}
+
+// 3. OPTIMIZE FONTS (Prevent FOIT - Flash of Invisible Text)
+// ========================================
+function optimizeFonts() {
+    if ('fonts' in document) {
+        // Wait for fonts to load
+        document.fonts.ready.then(() => {
+            document.body.classList.add('fonts-loaded');
+        });
+    }
+    
+    // Add font-display CSS
+    const fontStyle = document.createElement('style');
+    fontStyle.textContent = `
+        @font-face {
+            font-family: 'Inter';
+            font-display: swap;
+        }
+    `;
+    document.head.appendChild(fontStyle);
+}
+
+// 4. REDUCE ANIMATIONS ON MOBILE (Better performance)
+// ========================================
+function reduceMobileAnimations() {
+    // Check if device is mobile
+    const isMobile = window.innerWidth <= 768;
+    
+    if (isMobile) {
+        // Disable heavy animations
+        const style = document.createElement('style');
+        style.textContent = `
+            /* Reduce or remove animations on mobile */
+            .hero::before, .hero::after {
+                animation: none !important;
+                opacity: 0.05 !important;
+            }
+            
+            .skill-progress {
+                transition: width 0.5s ease !important;
+            }
+            
+            .project-card {
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            
+            .project-card:hover {
+                transform: none !important;
+            }
+            
+            .skill-category:hover {
+                transform: none !important;
+            }
+            
+            /* Simplify transitions */
+            * {
+                animation-duration: 0.3s !important;
+            }
+            
+            /* Disable background morphing animation */
+            .image-wrapper::before {
+                animation: none !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
+// 5. THROTTLE SCROLL EVENTS (Improve scroll performance)
+// ========================================
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+// Apply throttling to scroll-heavy functions
+function optimizeScrollEvents() {
+    const originalUpdateActiveNavLink = updateActiveNavLink;
+    const originalAnimateSkillBars = animateSkillBars;
+    const originalRevealOnScroll = revealOnScroll;
+    
+    // Replace with throttled versions
+    window.updateActiveNavLink = throttle(originalUpdateActiveNavLink, 100);
+    window.animateSkillBars = throttle(originalAnimateSkillBars, 100);
+    window.revealOnScroll = throttle(originalRevealOnScroll, 100);
+}
+
+// 6. CACHE DOM ELEMENTS (Reduce DOM queries)
+// ========================================
+class DOMCache {
+    constructor() {
+        this.cache = new Map();
+    }
+    
+    get(selector) {
+        if (!this.cache.has(selector)) {
+            this.cache.set(selector, document.querySelector(selector));
+        }
+        return this.cache.get(selector);
+    }
+    
+    getAll(selector) {
+        if (!this.cache.has(selector)) {
+            this.cache.set(selector, document.querySelectorAll(selector));
+        }
+        return this.cache.get(selector);
+    }
+    
+    clear() {
+        this.cache.clear();
+    }
+}
+
+// Initialize DOM cache
+const domCache = new DOMCache();
+
+// 7. PRELOAD CRITICAL RESOURCES
+// ========================================
+function preloadCriticalResources() {
+    const criticalResources = [
+        // Preload critical images
+        // 'Profile_pic.jpg',
+        // 'Portfolio.pic.png'
+    ];
+    
+    criticalResources.forEach(resource => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = resource.endsWith('.css') ? 'style' : 'image';
+        link.href = resource;
+        document.head.appendChild(link);
+    });
+}
+
+// 8. DEFFER JAVASCRIPT EXECUTION
+// ========================================
+function deferJavaScript() {
+    // Move non-critical JavaScript to after page load
+    window.addEventListener('load', () => {
+        // Initialize non-critical features
+        setTimeout(() => {
+            initNonCriticalFeatures();
+        }, 100);
+    });
+}
+
+function initNonCriticalFeatures() {
+    // Initialize stats counter
+    if (typeof animateStats === 'function') {
+        animateStats();
+    }
+    
+    // Initialize any other non-critical features
+    console.log('Non-critical features loaded');
+}
+
+// 9. OPTIMIZE EVENT LISTENERS
+// ========================================
+function optimizeEventListeners() {
+    // Use event delegation where possible
+    document.body.addEventListener('click', (e) => {
+        // Handle filter buttons
+        if (e.target.classList && e.target.classList.contains('filter-btn')) {
+            // Filter logic here (but it's already handled)
+        }
+        
+        // Handle mobile menu
+        if (e.target.closest('.mobile-menu-btn')) {
+            // Mobile menu logic
+        }
+    });
+}
+
+// 10. ENABLE SMOOTH SCROLLING WITH PERFORMANCE IN MIND
+// ========================================
+function initSmoothScrolling() {
+    // Only enable smooth scrolling on desktop
+    const isMobile = window.innerWidth <= 768;
+    
+    if (!isMobile) {
+        document.documentElement.style.scrollBehavior = 'smooth';
+    } else {
+        // Use JavaScript smooth scroll on mobile (more performant)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerOffset = 70;
+                    const elementPosition = targetElement.offsetTop;
+                    const offsetPosition = elementPosition - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    }
+}
+
+// 11. COMPRESS AND OPTIMIZE IMAGES (Helper function)
+// ========================================
+function optimizeImages() {
+    // Add loading="lazy" to all images
+    document.querySelectorAll('img').forEach(img => {
+        if (!img.hasAttribute('loading')) {
+            img.setAttribute('loading', 'lazy');
+        }
+        
+        // Add decoding="async" for faster rendering
+        img.setAttribute('decoding', 'async');
+    });
+}
+
+// 12. DETECT SLOW CONNECTION AND ADJUST
+// ========================================
+function detectSlowConnection() {
+    if ('connection' in navigator) {
+        const connection = navigator.connection;
+        
+        if (connection.saveData || 
+            connection.effectiveType === 'slow-2g' || 
+            connection.effectiveType === '2g') {
+            
+            // Disable heavy features on slow connections
+            document.body.classList.add('slow-connection');
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                /* Disable animations on slow connections */
+                * {
+                    animation: none !important;
+                    transition: none !important;
+                }
+                
+                /* Load lower quality images */
+                img {
+                    filter: blur(0) !important;
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Show notification
+            showNotification('📱 Optimizing for slower connection...', 'info');
+        }
+    }
+}
+
+// 13. USE REQUESTANIMATIONFRAME FOR SMOOTH ANIMATIONS
+// ========================================
+function smoothAnimation(fn) {
+    let ticking = false;
+    
+    return function() {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                fn.apply(this, arguments);
+                ticking = false;
+            });
+            ticking = true;
+        }
+    };
+}
+
+// 14. CLEANUP MEMORY (Prevent memory leaks)
+// ========================================
+function setupCleanup() {
+    // Clear DOM cache when page is unloaded
+    window.addEventListener('beforeunload', () => {
+        domCache.clear();
+    });
+    
+    // Remove old notifications
+    setInterval(() => {
+        const oldNotifications = document.querySelectorAll('.custom-notification');
+        oldNotifications.forEach(notification => {
+            if (notification.style.animation === 'slideOutRight 0.3s ease 2.7s forwards') {
+                setTimeout(() => notification.remove(), 3000);
+            }
+        });
+    }, 5000);
+}
+
+// 15. MAIN INITIALIZATION FUNCTION
+// ========================================
+function initPerformanceOptimizations() {
+    // Run critical optimizations immediately
+    optimizeImages();
+    optimizeFonts();
+    detectSlowConnection();
+    reduceMobileAnimations();
+    initLazyLoading();
+    
+    // Run after DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            deferNonCriticalCSS();
+            optimizeEventListeners();
+            initSmoothScrolling();
+            setupCleanup();
+        });
+    } else {
+        deferNonCriticalCSS();
+        optimizeEventListeners();
+        initSmoothScrolling();
+        setupCleanup();
+    }
+    
+    // Run after page fully loads
+    window.addEventListener('load', () => {
+        preloadCriticalResources();
+        deferJavaScript();
+        optimizeScrollEvents();
+    });
+}
+
+// Start performance optimizations
+initPerformanceOptimizations();
+
+// Update existing functions to be more performance-friendly
+// Override showNotification to be lighter on mobile
+const originalShowNotification = window.showNotification;
+if (originalShowNotification) {
+    window.showNotification = function(message, type) {
+        const isMobile = window.innerWidth <= 768;
+        
+        if (isMobile) {
+            // Shorter notifications on mobile
+            const notification = document.createElement('div');
+            notification.className = `custom-notification ${type}`;
+            notification.innerHTML = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 10px;
+                left: 10px;
+                background: var(--gradient-1);
+                color: white;
+                padding: 0.8rem;
+                border-radius: 12px;
+                text-align: center;
+                z-index: 9999;
+                font-size: 0.85rem;
+                animation: slideInRight 0.2s ease;
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.remove(), 2000);
+        } else {
+            originalShowNotification(message, type);
+        }
+    };
+}
 });
